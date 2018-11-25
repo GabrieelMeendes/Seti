@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+
+  <title>Tela de Login</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="js/main.js"></script>
+</head>
+
+
+<body>
+  <div class="container centralizar-painel  ">
+    <div class=" form-signin">
+        <form action= index.html method = post>
+          <h2 class="form-signin-heading"> Cadastre-se </h2>
+          <br>
+          <label for="idUsuario" class="sr-only">Login</label>
+          <input type="text" id="idUsuario" class="form-control" placeholder="Nome do Usuario" required autofocus>
+          <br>
+          <label for="idLogin" class="sr-only">Senha</label>
+           <input type="username" id="idLogin" class="form-control" placeholder="Login" required autofocus>
+           <br>
+          <input type="password" id="idSenha" class="form-control" placeholder="Password" required autofocus>
+          <div class="checkbox">
+          </div>
+          <br>
+          <button class="btn btn-dark" onclick = "cad()" type="submit">Cadastrar</button>
+          <form action="index.html">
+              <button class="btn btn-dark" type="submit">Voltar</button>
+              </form>
+        </form>
+
+        <br>
+
+
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+
+  <script type="text/javascript">
+
+    function cad() {
+    $.ajax({
+    url: 'RecebendoValor.php',
+    type: 'POST',
+    data: ({
+    nome: $("#idUsuario").val(),
+    login: $("#idLogin").val(),
+    senha: $("#idSenha").val()
+    }),
+    success: function (data) {
+    console.log(data);
+    //console.log(data);
+    }
+    });
+    }
+    </script>
