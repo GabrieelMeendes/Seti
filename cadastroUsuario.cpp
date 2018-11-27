@@ -25,18 +25,11 @@ int main(int argc, char *argv[])
   MYSQL *conn;
   conn = mysql_init(NULL);
 
-  string nome = string(argv[1]);
-  string login = string(argv[2]);
-  string senha = string(argv[3]);
+  string nome = string(argv[2]);
+  string login = string(argv[3]);
+  string senha = string(argv[4]);
 
-  if (mysql_real_connect(conn, HOST, USER, PASS, DB, 0, NULL, 0))
-  {
-    // cout << "Conectado ao Banco " << endl;
-  }
-  else
-  {
-    // cout << "Não Conectado " << endl;
-  }
+  mysql_real_connect(conn, HOST, USER, PASS, DB, 0, NULL, 0);
 
   MYSQL_RES *resultado;
 
@@ -52,6 +45,8 @@ int main(int argc, char *argv[])
   {
     cout << "Usuario já existe !!!" << endl;
   }
+  
+  mysql_free_result(resultado);
   mysql_close(conn);
   return 0;
 }

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/free-jqgrid/4.15.5/css/ui.jqgrid.min.css">
+  <link href="css/style.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/free-jqgrid/4.15.5/jquery.jqgrid.min.js"></script>
+  <title>jqgrid- Tabela de Usuarios</title>
+</head>
+
+<body>
+  <div class="configs2">
+    <table id="grid"></table>
+  </div>
+  <div class="configs1">
+    <button class="btn btn-dark" onclick="voltar()" type="submit">Deslogar</button>
+    
+    <button class="btn btn-dark" onclick="editarUsuario()" type="submit">Ediar Usuario</button>
+  </div>
+</body>
+</html>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#grid").jqGrid({
+      type: "POST",
+      url: 'recebeValores.php?op=Jqgrid',
+      datatype: "json",
+      colNames: ["Login", "Senha", "Usuario"],
+      colModel: [
+        { name: "Login", label: "Login", width: 170, align: "center" },
+        { name: "Senha", label: "Senha", width: 170, align: "center" },
+        { name: "Usuario", label: "Usuario", width: 170, align: "center" },
+      ],
+      guiStyle: "bootstrap4",
+      iconSet: "fontAwesome",
+      idPrefix: "gb1_",
+      rownumbers: true,
+      sortname: "invdate",
+      sortorder: "desc",
+      threeStateSort: true,
+      sortIconsBeforeText: true,
+      headertitles: true,
+      pager: true,
+      viewrecords: true,
+
+    });
+  })
+
+  function voltar() {
+    window.location.href = 'index.html';
+  }
+
+   function editarUsuario() {
+    window.location.href = 'editarUsuario.html';
+  }
+</script>
